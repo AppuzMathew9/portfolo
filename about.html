@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Sijo Mathew</title>
+  <!-- Social Meta Tags -->
+  <meta property="og:title" content="About — Sijo Mathew">
+  <meta property="og:description" content="Discover my journey, skills, and the story behind the code.">
+  <meta property="og:image" content="sijoorgbw.png">
+  <meta property="og:type" content="profile">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital@1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="immersive.css">
+  <link rel="stylesheet" href="neo-theme.css">
+  <link rel="stylesheet" href="about.css?v=12">
+  <link rel="stylesheet" href="global-dark.css?v=1">
+</head>
+
+<body class="dark-theme">
+  <!-- Background Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="floating-nav">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <p>WHO I AM</p>
+      <h1><span class="spiderman-text" style="font-size: inherit;">ABOUT ME</span></h1>
+    </header>
+
+    <!-- Cozy About Section -->
+    <div class="about-grid"
+      style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-bottom: 6rem;">
+      <!-- Profile Card -->
+      <div class="profile-card" data-tilt
+        style="text-align: center; background: rgba(255,255,255,0.03); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+        <div style="position: relative; display: inline-block;">
+          <img src="sijoorgbw.png" alt="Sijo Mathew"
+            style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 4px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+        <h3 style="margin-top: 1.5rem; font-size: 1.5rem; margin-bottom: 0.5rem;">Sijo Mathew</h3>
+        <span style="color: #888; letter-spacing: 0.1em; font-size: 0.8rem; text-transform: uppercase;">Creative
+          Developer</span>
+      </div>
+
+      <!-- Content -->
+      <div class="info-section">
+        <h2 style="font-size: 3rem; margin-top: 0; font-family: 'Playfair Display', serif;">Curating Digital<br><span
+            class="shimmer-text">Experiences.</span></h2>
+
+        <p style="color: #bbb; line-height: 1.9; font-size: 1.1rem; margin-bottom: 2rem;">
+          I'm <strong>Sijo Mathew</strong>, based in India. I don't just write code; I craft stories through pixels.
+          My journey is fueled by a curiosity for <strong>Cloud Technologies</strong> and a passion for
+          <strong>interface design</strong> that feels
+          natural, intuitive, and <strong>delightful</strong>.
+        </p>
+
+        <div class="stats-row" style="display: flex; gap: 2rem; margin-bottom: 3rem;">
+          <a href="https://drive.google.com/drive/folders/1x9CV6UgPrtgJU1Nw-IjQrdb2-pVaFBoz?usp=drive_link"
+            target="_blank" style="text-decoration: none; cursor: pointer;">
+            <div style="text-align: left;">
+              <span class="stats-num" data-target="5"
+                style="font-size: 2.5rem; font-weight: 700; color: #fff;">0</span><span
+                style="font-size: 2.5rem; font-weight: 700; color: #fff;">+</span>
+              <p style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Certifications
+              </p>
+            </div>
+          </a>
+          <a href="projects.html" style="text-decoration: none; cursor: pointer;">
+            <div style="text-align: left;">
+              <span class="stats-num" data-target="3"
+                style="font-size: 2.5rem; font-weight: 700; color: #fff;">0</span><span
+                style="font-size: 2.5rem; font-weight: 700; color: #fff;">+</span>
+              <p style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Live Projects
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="actions">
+          <a href="https://drive.google.com/file/d/1NTRmjXzzIdYvY8rZXbgR__k-X5N1l9XJ/view?usp=drive_link"
+            target="_blank" class="btn-primary">
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-hint">
+      <p style="font-size: 0.8rem; letter-spacing: 2px; color: #69f0ae;">SCROLL TO EXPLORE</p>
+      <i class="fa-solid fa-chevron-down" style="color: #fff; margin-top: 10px;"></i>
+    </div>
+
+    <!-- Tech Stack Marquee (New Premium Addition) -->
+    <div class="tech-stack-section">
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <!-- Set 1 -->
+          <span title="React"><i class="fa-brands fa-react"></i></span>
+          <span title="JavaScript"><i class="fa-brands fa-js"></i></span>
+          <span title="Python"><i class="fa-brands fa-python"></i></span>
+          <span title="HTML5"><i class="fa-brands fa-html5"></i></span>
+          <span title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+          <span title="Git"><i class="fa-brands fa-git-alt"></i></span>
+          <span title="Figma"><i class="fa-brands fa-figma"></i></span>
+          <span title="Node.js"><i class="fa-brands fa-node-js"></i></span>
+          <!-- Set 2 (Duplicate for loop) -->
+          <span title="React"><i class="fa-brands fa-react"></i></span>
+          <span title="JavaScript"><i class="fa-brands fa-js"></i></span>
+          <span title="Python"><i class="fa-brands fa-python"></i></span>
+          <span title="HTML5"><i class="fa-brands fa-html5"></i></span>
+          <span title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+          <span title="Git"><i class="fa-brands fa-git-alt"></i></span>
+          <span title="Figma"><i class="fa-brands fa-figma"></i></span>
+          <span title="Node.js"><i class="fa-brands fa-node-js"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modern Timeline (Cards instead of line) -->
+    <div>
+      <h3 style="font-size: 2rem; font-family: 'Playfair Display', serif; margin-bottom: 3rem; text-align: center;">My
+        Journey</h3>
+
+      <div class="timeline-flow">
+
+        <!-- Item 1 (Left) -->
+        <div class="timeline-flow-item left">
+          <div class="timeline-content" data-tilt>
+            <span class="year-badge">2022 - 2026</span>
+            <h4 style="font-size: 1.2rem; margin: 0 0 0.5rem; color: #eee;">B.Tech in Computer Science</h4>
+            <p style="color: #888; font-size: 0.9rem;">St.Joseph College Of Engineering & Technology</p>
+          </div>
+        </div>
+
+        <!-- Item 2 (Right) -->
+        <div class="timeline-flow-item right">
+          <div class="timeline-content" data-tilt>
+            <span class="year-badge">2025</span>
+            <h4 style="font-size: 1.2rem; margin: 0 0 0.5rem; color: #eee;">AI Research Intern</h4>
+            <p style="color: #888; font-size: 0.9rem;">Accelerate X, Kochi</p>
+          </div>
+        </div>
+
+        <!-- Item 3 (Left) -->
+        <div class="timeline-flow-item left">
+          <div class="timeline-content" data-tilt>
+            <span class="year-badge">2025</span>
+            <h4 style="font-size: 1.2rem; margin: 0 0 0.5rem; color: #eee;">Flutter Dev Intern</h4>
+            <p style="color: #888; font-size: 0.9rem;">Stem Robotics, Ernakulam</p>
+          </div>
+        </div>
+
+        <!-- Item 4 (Right) -->
+        <div class="timeline-flow-item right">
+          <div class="timeline-content" data-tilt>
+            <span class="year-badge">2024</span>
+            <h4 style="font-size: 1.2rem; margin: 0 0 0.5rem; color: #eee;">Cyber Security Intern</h4>
+            <p style="color: #888; font-size: 0.9rem;">Stem Robotics, Ernakulam</p>
+          </div>
+        </div>
+
+        <!-- Item 5 (Left) -->
+        <div class="timeline-flow-item left">
+          <div class="timeline-content" data-tilt>
+            <span class="year-badge">2004 - 2022</span>
+            <h4 style="font-size: 1.2rem; margin: 0 0 0.5rem; color: #eee;">High School</h4>
+            <p style="color: #888; font-size: 0.9rem;">United Indian School, Kuwait</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Core Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- Re-use the background script -->
+    <script type="module" src="bg-animation.js"></script>
+    <script type="module" src="bg-shapes.js"></script>
+    <script src="script.js?v=21"></script>
+    <script src="transition.js"></script>
+    <script src="extras.js"></script>>
+    <script>
+      // Random Number Effect
+      // Random Number Effect with Intersection Observer
+      const stats = document.querySelectorAll('.stats-num');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stat = entry.target;
+            const target = +stat.getAttribute('data-target');
+            // Check if already animated via class
+            if (stat.classList.contains('counted')) return;
+            stat.classList.add('counted');
+
+            const duration = 2000;
+            const steps = 20;
+            let step = 0;
+
+            const interval = setInterval(() => {
+              step++;
+              if (step < steps) {
+                stat.innerText = Math.floor(Math.random() * 10);
+              } else {
+                clearInterval(interval);
+                stat.innerText = target;
+              }
+            }, duration / steps);
+          }
+        });
+      }, { threshold: 0.1 }); // Trigger when 10% visible
+
+      stats.forEach(stat => {
+        observer.observe(stat);
+        // Fallback for immediate load (if observer fails or top of page)
+        // setTimeout(() => { if(!stat.classList.contains('counted')) stat.innerText = stat.getAttribute('data-target'); }, 3000);
+      });
+    </script>
+</body>
+
+</html>
