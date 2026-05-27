@@ -3,7 +3,7 @@ name: Deploy Website to InfinityFree
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   web-deploy:
