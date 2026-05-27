@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Exploration — John Décor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brandBlue: '#2563eb',
+                        brandDark: '#0a0a0c',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0c;
+            overflow: hidden;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism style for navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Custom transition ease */
+        .smooth-transition {
+            transition: all 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        /* Text mask styling */
+        .text-mask-fluid {
+            background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1600&auto=format&fit=crop');
+            background-size: 100vw 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Scrollbar styles for carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-white font-sans overflow-hidden">
+
+    <!-- Global Background Wrapper -->
+    <div id="page-bg-wrapper" class="absolute inset-0 bg-[#0a0a0c] z-0 transition-colors duration-500"></div>
+
+    <!-- Core Canvas Container (Full-bleed initially) -->
+    <div id="canvas-container" class="absolute inset-0 z-10 w-full h-full overflow-hidden pointer-events-none origin-center">
+        <img id="canvas-image" 
+             src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1600&auto=format&fit=crop" 
+             alt="Vibrant Fluid Art" 
+             class="w-full h-full object-cover scale-100">
+    </div>
+
+    <!-- Page Content Overlay -->
+    <div class="relative w-full min-h-screen z-20 flex flex-col justify-between">
+        
+        <!-- Navbar -->
+        <header id="navbar" class="w-full flex items-center justify-between px-8 py-6 md:px-16 transition-all duration-300">
+            <div class="text-xl md:text-2xl font-extrabold tracking-tight text-white cursor-pointer select-none">
+                John <span class="text-indigo-400">Décor</span>
+            </div>
+            <nav class="flex items-center space-x-6 md:space-x-10 text-xs md:text-sm uppercase tracking-widest font-semibold text-gray-300">
+                <a href="#" class="hover:text-white transition-colors duration-200 relative group">
+                    Work
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 relative group">
+                    About
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 relative group">
+                    Products
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 relative group">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- STATE 1 Hero Content -->
+        <div id="state1-hero" class="flex-grow flex flex-col justify-center items-center text-center px-4 md:px-8 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight text-white mb-6 uppercase select-none leading-none">
+                Visual Exploration
+            </h1>
+            <p class="text-gray-400 text-base md:text-xl font-light tracking-wide max-w-xl mx-auto leading-relaxed mb-10">
+                Pushing the boundaries of photography by taking abstract images
+            </p>
+            <button id="trigger-morph" class="group relative px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full font-bold uppercase tracking-widest text-xs md:text-sm transition-all duration-300 overflow-hidden cursor-pointer">
+                <span class="relative z-10 transition-colors group-hover:text-white">Explore Gallery</span>
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full -z-10"></div>
+            </button>
+        </div>
+
+        <!-- STATE 2 Content (Hidden / Positioned Behind at Start) -->
+        <div id="state2-hero" class="absolute inset-0 flex flex-col justify-center items-center text-center px-4 max-w-5xl mx-auto pointer-events-none opacity-0 select-none">
+            <!-- Morph target header box -->
+            <div id="target-mask-box" class="relative inline-block w-[60vw] h-[14vw] flex items-center justify-center mb-6">
+                <!-- Inner header hidden/invisible target layout but takes space -->
+                <h2 id="masked-headline" class="text-[12vw] font-black lowercase text-transparent tracking-tighter leading-none select-none select-none text-mask-fluid absolute">
+                    creative
+                </h2>
+            </div>
+
+            <div id="state2-details" class="flex flex-col items-center">
+                <h3 class="text-2xl md:text-4xl font-extrabold text-[#111827] mb-4 leading-tight">
+                    Shooting eye-catching moments for fun
+                </h3>
+                <p class="text-[#4B5563] text-sm md:text-base max-w-xl mb-8 leading-relaxed">
+                    Every image is a story in frame. Discover my most popular images and uncover the stories behind them.
+                </p>
+                <button id="state2-cta" class="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold uppercase tracking-wider text-xs md:text-sm shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transform hover:-translate-y-0.5 transition-all duration-200 opacity-0 pointer-events-none cursor-pointer">
+                    Discover my work
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Carousel (State 2) -->
+        <div id="bottom-carousel" class="w-full flex justify-center space-x-4 md:space-x-6 px-6 py-8 overflow-x-auto no-scrollbar pointer-events-none opacity-0 translate-y-24">
+            <div class="w-28 h-36 md:w-44 md:h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop" alt="Abstract 1" class="w-full h-full object-cover">
+            </div>
+            <div class="w-28 h-36 md:w-44 md:h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&auto=format&fit=crop" alt="Abstract 2" class="w-full h-full object-cover">
+            </div>
+            <div class="w-28 h-36 md:w-44 md:h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=400&auto=format&fit=crop" alt="Abstract 3" class="w-full h-full object-cover">
+            </div>
+            <div class="w-28 h-36 md:w-44 md:h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=400&auto=format&fit=crop" alt="Abstract 4" class="w-full h-full object-cover">
+            </div>
+            <div class="w-28 h-36 md:w-44 md:h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop" alt="Abstract 5" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset / Reverse Button -->
+    <button id="reset-button" class="absolute top-6 left-6 md:left-10 z-50 px-4 py-2 bg-black/60 hover:bg-black/80 text-white border border-white/20 rounded-full text-xs font-semibold uppercase tracking-wider opacity-0 pointer-events-none transition-all duration-300 hover:scale-105 cursor-pointer">
+        ← Back
+    </button>
+
+    <!-- Staircase Overlay Wipe (Initial load visual animation) -->
+    <div id="staircase-wrapper" class="fixed inset-0 flex z-50 pointer-events-none">
+        <div class="bg-[#0a0a0c] h-full flex-1 entry-block origin-top"></div>
+        <div class="bg-[#0a0a0c] h-full flex-1 entry-block origin-top"></div>
+        <div class="bg-[#0a0a0c] h-full flex-1 entry-block origin-top"></div>
+        <div class="bg-[#0a0a0c] h-full flex-1 entry-block origin-top"></div>
+        <div class="bg-[#0a0a0c] h-full flex-1 entry-block origin-top"></div>
+    </div>
+
+    <script>
+        // Staircase Grid Wipe on Load
+        gsap.to(".entry-block", {
+            scaleY: 0,
+            duration: 1.2,
+            stagger: 0.1,
+            ease: "power4.inOut",
+            onComplete: () => {
+                const wrapper = document.getElementById('staircase-wrapper');
+                if (wrapper) wrapper.remove();
+            }
+        });
+
+        // Elements
+        const triggerMorph = document.getElementById('trigger-morph');
+        const resetButton = document.getElementById('reset-button');
+        const pageBg = document.getElementById('page-bg-wrapper');
+        const canvasContainer = document.getElementById('canvas-container');
+        const canvasImage = document.getElementById('canvas-image');
+        const navbar = document.getElementById('navbar');
+        const state1Hero = document.getElementById('state1-hero');
+        const state2Hero = document.getElementById('state2-hero');
+        const state2Details = document.getElementById('state2-details');
+        const state2Cta = document.getElementById('state2-cta');
+        const bottomCarousel = document.getElementById('bottom-carousel');
+        const maskedHeadline = document.getElementById('masked-headline');
+        const targetBox = document.getElementById('target-mask-box');
+
+        // Master Timeline Setup
+        const tl = gsap.timeline({ paused: true });
+
+        // Calculate dynamic dimensions of target headline to match precisely during window sizes
+        function getTargetBounds() {
+            const rect = targetBox.getBoundingClientRect();
+            return {
+                width: rect.width + "px",
+                height: rect.height + "px",
+                left: rect.left + "px",
+                top: rect.top + "px"
+            };
+        }
+
+        // Build Master Animation
+        function initTimeline() {
+            tl.clear(); // Clear to allow recalculation on window resize
+            const bounds = getTargetBounds();
+
+            // Set initial inline values for container to animate
+            gsap.set(canvasContainer, {
+                width: '100%',
+                height: '100%',
+                left: '0px',
+                top: '0px',
+                borderRadius: '0px'
+            });
+
+            tl.addLabel("start")
+                // Phase 1: Outro State 1
+                .to(navbar, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, "start")
+                .to(state1Hero, { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, "start")
+                
+                // Phase 2: Morph & Background White Shift
+                .to(pageBg, { backgroundColor: "#ffffff", duration: 0.8, ease: "power3.inOut" }, "start+=0.2")
+                .to(canvasContainer, {
+                    width: bounds.width,
+                    height: bounds.height,
+                    left: bounds.left,
+                    top: bounds.top,
+                    borderRadius: "16px",
+                    duration: 0.8,
+                    ease: "cubic-bezier(0.76, 0, 0.24, 1)" // Custom premium cubic bezier
+                }, "start+=0.2")
+                // Shrink/adjust the inner canvas image slightly to create depth during morph
+                .to(canvasImage, { scale: 1.15, duration: 0.8, ease: "power3.inOut" }, "start+=0.2")
+                // Toggle text mask overlay static state
+                .to(canvasContainer, { opacity: 0, duration: 0.1 }, "start+=0.95")
+                .to(state2Hero, { opacity: 1, pointerEvents: "auto", duration: 0.1 }, "start+=0.95")
+
+                // Phase 3: Intro State 2 Elements
+                .fromTo(state2Details.children, 
+                    { opacity: 0, y: 40 },
+                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+                    "start+=1.0"
+                )
+                .to(state2Cta, { opacity: 1, pointerEvents: "auto", duration: 0.4 }, "start+=1.3")
+                .to(bottomCarousel, {
+                    opacity: 1,
+                    y: 0,
+                    pointerEvents: "auto",
+                    duration: 0.7,
+                    ease: "back.out(1.2)"
+                }, "start+=1.1")
+                
+                // Reveal back button
+                .to(resetButton, { opacity: 1, pointerEvents: "auto", duration: 0.4 }, "start+=1.3");
+        }
+
+        // Initialize timeline
+        initTimeline();
+
+        // Listen for window resize to update target dimensions
+        window.addEventListener('resize', () => {
+            if (!tl.isActive() && tl.progress() === 0) {
+                initTimeline();
+            }
+        });
+
+        // Interaction Triggers
+        triggerMorph.addEventListener('click', () => {
+            initTimeline();
+            tl.play();
+        });
+
+        resetButton.addEventListener('click', () => {
+            tl.reverse();
+        });
+    </script>
+</body>
+</html>

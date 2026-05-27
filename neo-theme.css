@@ -1,0 +1,44 @@
+/* Matrix / Neo Theme Override */
+body.neo-theme,
+body.neo-theme .immersive-hero,
+body.neo-theme .page-wrapper,
+body.neo-theme .content-area,
+body.neo-theme .profile-card,
+body.neo-theme .dark-card {
+    background-color: #000 !important;
+    background-image: none !important;
+    color: #0f0 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.neo-theme h1,
+body.neo-theme h2,
+body.neo-theme h3,
+body.neo-theme p,
+body.neo-theme a,
+body.neo-theme span,
+body.neo-theme strong,
+body.neo-theme i {
+    color: #0f0 !important;
+    text-shadow: 0 0 5px #0f0 !important;
+}
+
+body.neo-theme .spiderman-text {
+    background: none !important;
+    -webkit-text-fill-color: #0f0 !important;
+    color: #0f0 !important;
+    animation: none !important;
+}
+
+body.neo-theme .btn-primary {
+    border-color: #0f0 !important;
+    color: #000 !important;
+    background: #0f0 !important;
+}
+
+body.neo-theme .btn-primary:hover {
+    background: #000 !important;
+    color: #0f0 !important;
+}
+
+/* Force particle color change in JS listener */

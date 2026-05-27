@@ -1,0 +1,135 @@
+/* --- IMMERSIVE & REVOLUTIONARY HERO --- */
+
+/* Reset & Layout */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Allow scrolling */
+    display: block !important;
+    /* Override style.css flex */
+    /* Deep Cosmic Gradient for an Artistic "Blackdrop" feel */
+    background: radial-gradient(circle at 50% 0%, #0f172a 0%, #000000 80%);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hide Sidebar on Home for Full Immersion */
+body.home-page .sidebar {
+    display: none;
+}
+
+body.home-page .container {
+    padding: 0;
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 5;
+    background: transparent !important;
+}
+
+/* --- The 3D Canvas Background --- */
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Just behind content */
+    opacity: 1 !important;
+    /* Fade in via JS could be used, or just default */
+    animation: none;
+}
+
+@keyframes fadeInCanvas {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Hero Content --- */
+.immersive-hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 20;
+    /* Boosted z-index */
+    text-align: center;
+    /* pointer-events: none; REMOVED to ensure layer is standard */
+}
+
+.immersive-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 8vw;
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin: 0;
+    text-transform: uppercase;
+    /* Rich, Artful Gradient Text Removed - Spans handle it */
+    color: #fff;
+    /* Fallback */
+}
+
+.immersive-hero h1 span {
+    display: block;
+    opacity: 1;
+    /* Forced visibility for debug, animation will override if working */
+    transform: translateY(0);
+    animation: slideUp 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+.immersive-hero h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.immersive-hero p {
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    opacity: 1;
+    /* Forced visibility */
+    animation: fadeIn 1s ease 0.6s forwards;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Floating Nav moved to global-dark.css */
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 768px) {
+    .immersive-hero h1 {
+        font-size: 10vw;
+        /* Slightly larger base to account for 0.6em inner font size */
+    }
+
+    .floating-nav {
+        top: 2rem;
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
+        justify-content: center;
+    }
+}

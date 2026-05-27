@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Sijo Mathew</title>
+  <!-- Social Meta Tags -->
+  <meta property="og:title" content="About — Sijo Mathew">
+  <meta property="og:description" content="Discover my journey, skills, and the story behind the code.">
+  <meta property="og:image" content="sijoorgbw.png">
+  <meta property="og:type" content="profile">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="immersive.css">
+  <link rel="stylesheet" href="neo-theme.css">
+  <link rel="stylesheet" href="about.css?v=16">
+  <link rel="stylesheet" href="global-dark.css?v=32">
+</head>
+
+<body class="dark-theme">
+  <!-- Background Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="floaty-nav">
+    <a href="index.html" class="nav-pill"><i class="fa-solid fa-house"></i> <span>home</span></a>
+    <a href="about.html" class="nav-pill active"><i class="fa-solid fa-user"></i> <span>about me</span></a>
+    <a href="projects.html" class="nav-pill"><i class="fa-solid fa-briefcase"></i> <span>projects</span></a>
+    <a href="contact.html" class="nav-pill"><i class="fa-solid fa-comment"></i> <span>contact me</span></a>
+    <button class="nav-close-btn" onclick="toggleNav()"><i class="fa-solid fa-xmark"></i></button>
+  </nav>
+  <button class="nav-launcher-btn" onclick="showNav()"><i class="fa-solid fa-bars"></i> Menu</button>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <p>WHO I AM</p>
+      <h1><span class="spiderman-text" style="font-size: inherit;">ABOUT ME</span></h1>
+    </header>
+
+    <!-- Revamped About Section (Dribbble Starburst Style) -->
+    <div class="about-section-revamp">
+      <!-- Visual Column (Interactive Circle) -->
+      <div class="about-visual">
+        <div class="circle" id="profile-interactive-circle">
+          <div class="circle_shine"></div>
+
+          <!-- Circular rotating text rings (outer + inner) -->
+          <div class="circle-text-rings">
+            <!-- Outer ring: rotates clockwise -->
+            <svg class="circular-text-svg ring-outer" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="outerCirclePath"
+                  d="M 170,170 m -145,0 a 145,145 0 1,1 290,0 a 145,145 0 1,1 -290,0" />
+              </defs>
+              <text class="circular-text outer-text">
+                <textPath href="#outerCirclePath" startOffset="0%">
+                  UI/UX ✦ DEV ✦ FULLSTACK ✦ AI ✦ UI/UX ✦ DEV ✦ FULLSTACK ✦ AI ✦
+                </textPath>
+              </text>
+            </svg>
+
+            <!-- Inner ring: rotates counter-clockwise -->
+            <svg class="circular-text-svg ring-inner" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="innerCirclePath"
+                  d="M 170,170 m -155,0 a 155,155 0 1,1 310,0 a 155,155 0 1,1 -310,0" />
+              </defs>
+              <text class="circular-text inner-text">
+                <textPath href="#innerCirclePath" startOffset="0%">
+                  CREATIVE ✦ CODE ✦ SYSTEM ✦ DESIGN ✦ CREATIVE ✦ CODE ✦ SYSTEM ✦
+                </textPath>
+              </text>
+            </svg>
+          </div>
+
+          <div class="circle_inner">
+            <!-- Sijo's photo layer -->
+            <div class="circle_inner__layer layer-photo">
+              <img src="sijoorgbw.png" alt="Sijo Mathew Thazhammadam">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Name label below the circle -->
+        <div class="circle_title">
+          <h2>Sijo Mathew</h2>
+          <h3>CSE B.Tech</h3>
+        </div>
+        <div class="content_shadow"></div>
+      </div>
+
+      <!-- Text Content Column -->
+      <div class="about-text-revamp">
+        <h2 style="font-family: 'Playfair Display', serif;"><span class="shimmer-text">Design & Code</span> Is My
+          Passion, Which Create Me More Professional.</h2>
+
+        <p style="color: #bbb; line-height: 1.9; font-size: 1.1rem; margin-bottom: 2.5rem;">
+          I am <strong>Sijo Mathew Thazhammadam</strong>, a B.Tech Computer Science Engineering student at <strong>St.
+            Joseph’s College of Engineering and Technology, Palai</strong>. I have a strong interest in software
+          development, AI-driven systems, data analytics, UI/UX, and full stack technologies. I don't just write code; I
+          craft digital ecosystems and smart solutions.
+        </p>
+
+        <!-- Focus Domains -->
+        <div class="domains-badge">
+          <span>AI</span><span class="dot">&bull;</span><span>Full Stack</span><span
+            class="dot">&bull;</span><span>UI/UX</span>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-value">6+</div>
+            <div class="stat-label">Projects Built</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-value">18+</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-value"><span class="stats-num" data-target="4">0</span>+</div>
+            <div class="stat-label">Interns &amp; Simulations</div>
+          </div>
+        </div>
+
+        <!-- Resume Button — new premium design -->
+        <div class="about-actions">
+          <a href="https://drive.google.com/file/d/1NTRmjXzzIdYvY8rZXbgR__k-X5N1l9XJ/view?usp=drive_link"
+            target="_blank" class="cta" id="resume-download-btn">
+            <span class="span">Resume</span>
+            <span class="second">
+              <svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path class="one" d="M 5 5 L 10 10 L 5 15" stroke="white" stroke-width="2" fill="none" />
+                <path class="two" d="M 10 5 L 15 10 L 10 15" stroke="white" stroke-width="2" fill="none" />
+                <path class="three" d="M 15 5 L 20 10 L 15 15" stroke="white" stroke-width="2" fill="none" />
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <!-- Quick Link Cards — new premium design -->
+        <div class="quick-links-showcase">
+
+          <!-- GitHub -->
+          <a href="https://github.com/AppuzMathew9" target="_blank" class="ql-card ql-github" id="github-link-card">
+            <span class="ql-pulse-ring"></span>
+            <div class="ql-icon-wrap">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="ql-info">
+              <span class="ql-label">GitHub</span>
+              <span class="ql-handle">@AppuzMathew9</span>
+            </div>
+            <div class="ql-badge">
+              <i class="fa-solid fa-code-branch"></i>
+            </div>
+          </a>
+
+          <!-- Certifications Drive -->
+          <a href="https://drive.google.com/drive/folders/1x9CV6UgPrtgJU1Nw-IjQrdb2-pVaFBoz?usp=drive_link"
+            target="_blank" class="ql-card ql-certs" id="certs-drive-link-card">
+            <span class="ql-pulse-ring"></span>
+            <div class="ql-icon-wrap">
+              <i class="fa-brands fa-google-drive"></i>
+            </div>
+            <div class="ql-info">
+              <span class="ql-label">Certifications</span>
+              <span class="ql-handle">18+ certificates</span>
+            </div>
+            <div class="ql-badge">
+              <i class="fa-solid fa-award"></i>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-hint">
+      <p style="font-size: 0.8rem; letter-spacing: 2px; color: #69f0ae;">SCROLL TO EXPLORE</p>
+      <i class="fa-solid fa-chevron-down" style="color: #fff; margin-top: 10px;"></i>
+    </div>
+
+    <!-- Tech Stack Marquee -->
+    <div class="tech-stack-section">
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <!-- Set 1 -->
+          <span title="React"><i class="fa-brands fa-react"></i></span>
+          <span title="JavaScript"><i class="fa-brands fa-js"></i></span>
+          <span title="Python"><i class="fa-brands fa-python"></i></span>
+          <span title="HTML5"><i class="fa-brands fa-html5"></i></span>
+          <span title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+          <span title="Git"><i class="fa-brands fa-git-alt"></i></span>
+          <span title="Figma"><i class="fa-brands fa-figma"></i></span>
+          <span title="Node.js"><i class="fa-brands fa-node-js"></i></span>
+          <!-- Set 2 -->
+          <span title="React"><i class="fa-brands fa-react"></i></span>
+          <span title="JavaScript"><i class="fa-brands fa-js"></i></span>
+          <span title="Python"><i class="fa-brands fa-python"></i></span>
+          <span title="HTML5"><i class="fa-brands fa-html5"></i></span>
+          <span title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+          <span title="Git"><i class="fa-brands fa-git-alt"></i></span>
+          <span title="Figma"><i class="fa-brands fa-figma"></i></span>
+          <span title="Node.js"><i class="fa-brands fa-node-js"></i></span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- 2. TECHNICAL EXPOSURE SECTION -->
+    <div class="container-skills-revamp" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+      <h2 class="section-revamp-title">Technical Exposure</h2>
+
+      <div class="skills-wrapper-premium">
+        <!-- Python -->
+        <div class="skill-card-premium">
+          <i class="fa-brands fa-python"></i>
+          <div>
+            <h4>Python</h4>
+            <p>AI/ML & CLI Systems</p>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-card-premium">
+          <i class="fa-solid fa-database"></i>
+          <div>
+            <h4>PostgreSQL & SQL</h4>
+            <p>Data & Relational Schema</p>
+          </div>
+        </div>
+
+        <!-- Flutter -->
+        <div class="skill-card-premium">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <div>
+            <h4>Flutter & Dart</h4>
+            <p>Mobile App Interfaces</p>
+          </div>
+        </div>
+
+        <!-- Web Dev -->
+        <div class="skill-card-premium">
+          <i class="fa-brands fa-js"></i>
+          <div>
+            <h4>Frontend Stack</h4>
+            <p>HTML, CSS, Vanilla JS</p>
+          </div>
+        </div>
+
+        <!-- Cloud/Backend -->
+        <div class="skill-card-premium">
+          <i class="fa-solid fa-server"></i>
+          <div>
+            <h4>Supabase & API</h4>
+            <p>Backend & Integration</p>
+          </div>
+        </div>
+
+        <!-- OpenCV -->
+        <div class="skill-card-premium">
+          <i class="fa-solid fa-eye"></i>
+          <div>
+            <h4>OpenCV</h4>
+            <p>Computer Vision</p>
+          </div>
+        </div>
+
+        <!-- Design -->
+        <div class="skill-card-premium">
+          <i class="fa-brands fa-figma"></i>
+          <div>
+            <h4>Figma & UI/UX</h4>
+            <p>Interactive Prototypes</p>
+          </div>
+        </div>
+
+        <!-- Version Control -->
+        <div class="skill-card-premium">
+          <i class="fa-brands fa-git-alt"></i>
+          <div>
+            <h4>Git & GitHub</h4>
+            <p>Collaborative Code</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. CERTIFICATIONS SECTION -->
+    <div class="container-certs-revamp" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+      <h2 class="section-revamp-title">Featured Certifications & Simulations</h2>
+
+      <div class="cards-grid-premium">
+        <!-- Certification 1 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Credential</span>
+            <h3>Neo4j Certified Professional</h3>
+            <p>Professional accreditation in Graph Databases, demonstrating knowledge of Cypher query logic and graph
+              modeling concepts.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">Graph Database</span>
+            <span class="tech-badge-item">Cypher</span>
+          </div>
+        </div>
+
+        <!-- Certification 2 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Google Vertex AI</span>
+            <h3>Prompt Design in Vertex AI</h3>
+            <p>Google Cloud certified skill badge verifying knowledge of prompt engineering, model tuning, and Vertex AI
+              system integrations.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">Generative AI</span>
+            <span class="tech-badge-item">Cloud AI</span>
+          </div>
+        </div>
+
+        <!-- Certification 3 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Postman Expert</span>
+            <h3>Postman API Student Expert</h3>
+            <p>Official Student Expert certification validating skills in API requests, validation logic, automation,
+              and environments.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">APIs</span>
+            <span class="tech-badge-item">API Testing</span>
+          </div>
+        </div>
+
+        <!-- Certification 4 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Deloitte Forage</span>
+            <h3>Data Analytics Job Simulation</h3>
+            <p>Completed Deloitte Australia's Data Analytics virtual job simulation focused on data quality analysis,
+              visualization dashboards, and business insights.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">Data Quality</span>
+            <span class="tech-badge-item">Tableau</span>
+          </div>
+        </div>
+
+        <!-- Certification 5 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Linux</span>
+            <h3>Introduction to Linux</h3>
+            <p>Accredited coursework on shell scripting, system admin commands, and directory tree configurations.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">Linux CLI</span>
+            <span class="tech-badge-item">Bash</span>
+          </div>
+        </div>
+
+        <!-- Certification 6 -->
+        <div class="card-premium-about">
+          <div>
+            <span class="card-tag-premium">Credential</span>
+            <h3>Software Engineering Management</h3>
+            <p>Validation of software engineering workflows, product sprint planning, Agile, and team code collaboration
+              practices.</p>
+          </div>
+          <div class="card-tech-badges">
+            <span class="tech-badge-item">Agile</span>
+            <span class="tech-badge-item">Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal Timeline Section -->
+    <div class="timeline-horizontal-container">
+      <div class="timeline-horizontal-header">
+        <span class="badge">Resume</span>
+        <h3>My Education & Experience</h3>
+      </div>
+
+      <div class="timeline-horizontal-flow">
+        <!-- Item 1 -->
+        <div class="timeline-horizontal-item">
+          <span class="year">2022 - 2026</span>
+          <h4>B.Tech in CS</h4>
+          <p>St.Joseph College Of Engineering & Technology, Palai</p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-horizontal-item">
+          <span class="year">2025</span>
+          <h4>AI Research Intern</h4>
+          <p>Accelerate X, Kochi</p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-horizontal-item">
+          <span class="year">2025</span>
+          <h4>Flutter Dev Intern</h4>
+          <p>Stem Robotics, Ernakulam</p>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-horizontal-item">
+          <span class="year">2024</span>
+          <h4>Cyber Security Intern</h4>
+          <p>Stem Robotics, Ernakulam</p>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-horizontal-item">
+          <span class="year">2004 - 2022</span>
+          <h4>High School</h4>
+          <p>United Indian School, Kuwait</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Core Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <script type="module" src="bg-animation.js"></script>
+  <script type="module" src="bg-shapes.js"></script>
+  <script src="script.js?v=21"></script>
+  <script src="transition.js?v=30"></script>
+  <script src="extras.js?v=30"></script>
+
+  <script>
+    // Random Number Effect with Intersection Observer
+    const stats = document.querySelectorAll('.stats-num');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stat = entry.target;
+          const target = +stat.getAttribute('data-target');
+          if (stat.classList.contains('counted')) return;
+          stat.classList.add('counted');
+
+          const duration = 2000;
+          const steps = 20;
+          let step = 0;
+
+          const interval = setInterval(() => {
+            step++;
+            if (step < steps) {
+              stat.innerText = Math.floor(Math.random() * 10);
+            } else {
+              clearInterval(interval);
+              stat.innerText = target;
+            }
+          }, duration / steps);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    stats.forEach(stat => {
+      observer.observe(stat);
+    });
+  </script>
+</body>
+
+</html>

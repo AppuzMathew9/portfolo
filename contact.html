@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Sijo Mathew</title>
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="Contact — Sijo Mathew">
+    <meta property="og:description" content="Get in touch. Let's build something amazing together.">
+    <meta property="og:image" content="sijoorgbw.png">
+    <meta property="og:type" content="website">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="contact.css?v=31">
+    <link rel="stylesheet" href="global-dark.css?v=32">
+    <link rel="stylesheet" href="neo-theme.css">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<body class="dark-theme">
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Floaty Navigation -->
+    <nav class="floaty-nav">
+        <a href="index.html" class="nav-pill"><i class="fa-solid fa-house"></i> <span>home</span></a>
+        <a href="about.html" class="nav-pill"><i class="fa-solid fa-user"></i> <span>about me</span></a>
+        <a href="projects.html" class="nav-pill"><i class="fa-solid fa-briefcase"></i> <span>projects</span></a>
+        <a href="contact.html" class="nav-pill active"><i class="fa-solid fa-comment"></i> <span>contact me</span></a>
+        <button class="nav-close-btn" onclick="toggleNav()"><i class="fa-solid fa-xmark"></i></button>
+    </nav>
+    <button class="nav-launcher-btn" onclick="showNav()"><i class="fa-solid fa-bars"></i> Menu</button>
+
+    <div class="page-wrapper"
+        style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; height: auto; overflow: visible; padding-bottom: 5rem; padding-top: 6rem;">
+        
+        <!-- Latest News Section (Dribbble Style) -->
+        <section class="latest-news-section">
+            <p class="get-in-touch-lbl" style="color: #d2ff1f; text-align: center;">Blog</p>
+            <h2 style="font-size: 3rem; font-family: 'Playfair Display', serif; margin: 0 0 1rem 0; color: #fff; text-align: center;">Latest News</h2>
+            <div class="news-grid" id="dynamic-news-container">
+                <!-- Skeleton cards loaded initially -->
+                <div class="news-card">
+                    <div class="news-image-wrapper">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #181d28 25%, #202634 50%, #181d28 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite;"></div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-meta">Loading...</span>
+                        <h3 class="news-title">Fetching the latest tech reads...</h3>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #181d28 25%, #202634 50%, #181d28 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite;"></div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-meta">Loading...</span>
+                        <h3 class="news-title">Fetching the latest tech reads...</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section Revamp (Daniel Korpai style) -->
+        <section class="contact-section-revamp">
+            <span class="get-in-touch-lbl">Get in touch</span>
+            <h1 class="contact-hero-title">Let's work together</h1>
+            <p class="contact-hero-desc">
+                If you have a website or mobile app idea in mind or you need some advice about learning web technologies, coding basics, or internships, feel free to <a href="mailto:appuzmathew9@gmail.com">contact me</a>. Currently my time books quickly, so the sooner you write, the better it is for both of us.
+            </p>
+            
+            <div class="reply-status-row">
+                <img src="sijoorgbw.png" alt="Sijo Mathew" class="reply-avatar">
+                <div class="status-dot-pulse"></div>
+                <span class="reply-text">Reply time: within 1-2 working days</span>
+            </div>
+            
+            <a href="mailto:appuzmathew9@gmail.com" class="contact-email-btn">appuzmathew9@gmail.com</a>
+            
+            <div class="contact-footer-socials">
+                <a href="https://www.linkedin.com/in/sijo-mathew-thazhammadam/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/AppuzMathew9" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/a_p_z.mt?igsh=ODl1cml3eDNka3Yz&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1A4jsdzjsU/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+            
+            <p class="contact-copyright">&copy; 2026 All rights reserved. &bull; Designed &amp; Coded by Sijo Mathew</p>
+        </section>
+
+        <!-- Dynamic script tag containing the news fetch & animations -->
+        <script>
+            // Fetch news dynamically from Dev.to API
+            fetch('https://dev.to/api/articles?tag=webdev&per_page=30')
+                .then(res => res.json())
+                .then(articles => {
+                    const filtered = articles.filter(a => a.reading_time >= 3 && a.reading_time <= 5).slice(0, 2);
+                    const displayArticles = filtered.length >= 2 ? filtered : articles.slice(0, 2);
+                    
+                    const container = document.getElementById('dynamic-news-container');
+                    if (container && displayArticles.length > 0) {
+                        container.innerHTML = displayArticles.map((article, idx) => {
+                            const readTime = article.reading_time ? article.reading_time : (idx % 2 === 0 ? 3 : 5);
+                            const dateStr = new Date(article.published_at).toLocaleDateString('en-US', {
+                                day: '2-digit',
+                                month: 'short',
+                                year: 'numeric'
+                            });
+                            const coverImage = article.cover_image || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop';
+                            
+                            return `
+                                <a href="${article.url}" target="_blank" class="news-card">
+                                    <div class="news-image-wrapper">
+                                        <img src="${coverImage}" alt="${article.title}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop'">
+                                    </div>
+                                    <div class="news-content">
+                                        <span class="news-meta">${dateStr} &bull; ${readTime} min read</span>
+                                        <h3 class="news-title">${article.title}</h3>
+                                    </div>
+                                </a>
+                            `;
+                        }).join('');
+                    }
+                })
+                .catch(err => {
+                    console.error("Error fetching news:", err);
+                });
+
+            // Contact animations
+            const initContactAnim = () => {
+                anime.timeline({
+                    loop: false
+                })
+                .add({
+                    targets: '.news-card',
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    delay: anime.stagger(150),
+                    easing: 'easeOutExpo',
+                    duration: 1000
+                })
+                .add({
+                    targets: ['.get-in-touch-lbl', '.contact-hero-title', '.contact-hero-desc', '.reply-status-row', '.contact-email-btn', '.contact-footer-socials a'],
+                    translateY: [20, 0],
+                    opacity: [0, 1],
+                    delay: anime.stagger(100),
+                    easing: 'easeOutExpo'
+                }, '-=500');
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initContactAnim);
+            } else {
+                initContactAnim();
+            }
+        </script>
+    </div>
+
+    <!-- Custom Cursor elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script type="module" src="bg-animation.js"></script>
+    <script type="module" src="bg-shapes.js"></script>
+    <script src="script.js?v=21"></script>
+    <script src="transition.js?v=30"></script>
+    <script src="extras.js?v=30"></script>
+</body>
+</html>
